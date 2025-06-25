@@ -1,0 +1,28 @@
+<!-- dashboard_hospital.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Hospital Dashboard | Blood Bank</title>
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+  <div id="header-container"></div>
+
+  <main class="dashboard">
+    <h2>Welcome Hospital: <span id="hospitalName">Galaxy Hospital</span></h2>
+    <section class="card">
+      <p>Hospital-specific features coming soon (like request blood, view history, etc).</p>
+    </section>
+
+    <button class="logout-btn" onclick="logout()">Logout</button>
+  </main>
+
+  <script type="module">
+    import { loadHeader } from "../components/header.js";
+    loadHeader();
+  </script>
+  <script src="../js/dashboard_hospital.js"></script>
+</body>
+</html>

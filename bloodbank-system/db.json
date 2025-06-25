@@ -1,0 +1,34 @@
+{
+  "users": [],
+  "admins": [
+    {
+      "id": 1,
+      "name": "admin1",
+      "email": "admin1@ex.com",
+      "password": "admin123"
+    },
+    {
+      "id": 2,
+      "name": "admin2",
+      "email": "admin2@ex.com",
+      "password": "admin123"
+    }
+  ],
+  "hospitals": [
+    {
+      "id": 1,
+      "name": "Galaxyhospital",
+      "email": "galaxy@ex.com",
+      "password": "galaxy123"
+    },
+    {
+      "id": 2,
+      "name": "Maxhospital",
+      "email": "max@ex.com",
+      "password": "max123"
+    }
+  ],
+  "donors": [],
+  "requests": [],
+  "notifications": []
+}

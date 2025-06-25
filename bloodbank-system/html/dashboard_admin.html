@@ -1,0 +1,29 @@
+<!-- dashboard_admin.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Admin Dashboard | Blood Bank</title>
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+  <div id="header-container"></div>
+
+  <main class="dashboard">
+    <h2>Welcome Admin</h2>
+    <section class="card">
+      <h3>Registered Users</h3>
+      <div id="userList"></div>
+    </section>
+
+    <button class="logout-btn" onclick="logout()">Logout</button>
+  </main>
+
+  <script type="module">
+    import { loadHeader } from "../components/header.js";
+    loadHeader();
+  </script>
+  <script src="../js/dashboard_admin.js"></script>
+</body>
+</html>
