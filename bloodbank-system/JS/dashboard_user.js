@@ -8,7 +8,7 @@ if (!user || user.role !== "user") {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  document.getElementById("welcomeUser").textContent = `Welcome, ${user.name}`;
+  document.getElementById("userName").textContent = user.name;
 });
 
 // Function to search donors by city

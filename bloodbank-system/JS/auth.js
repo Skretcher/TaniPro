@@ -19,40 +19,33 @@ if (registerForm) {
     const city = document.getElementById("city").value.trim();
     const bloodGroup = document.getElementById("bloodGroup").value.trim();
 
+    // Only allow 'user' to register themselves
+    if (role !== "user") {
+      alert("Only users can register themselves. Contact admin for admin/hospital access.");
+      return;
+    }
+
     // Validate all fields
     if (!name || !email || !password || !role || !mobile || !city || !bloodGroup) {
       alert("Please fill in all fields.");
       return;
     }
 
-    // Determine the correct endpoint (users/admins/hospitals)
-    const endpoint = `http://localhost:5000/${role}s`; // users, admins, hospitals
-
-    // First: Check if the email already exists in *any* collection
-    const rolesToCheck = ["users", "admins", "hospitals"];
-    let emailExists = false;
-
-    for (const r of rolesToCheck) {
-      const res = await fetch(`http://localhost:5000/${r}?email=${email}`);
-      const data = await res.json();
-      if (data.length > 0) {
-        emailExists = true;
-        break;
-      }
-    }
-
-    if (emailExists) {
+    // Check if the email already exists in users
+    const resCheck = await fetch(`http://localhost:5000/users?email=${email}`);
+    const existing = await resCheck.json();
+    if (existing.length > 0) {
       alert("This email is already registered.");
       return;
     }
 
     // Prepare user data
     const newUser = {
-      id: Date.now(), // unique ID
+      id: Date.now(),
       name,
       email,
       password,
-      role,           // will be "user", "admin", or "hospital"
+      role,
       mobile,
       city,
       bloodGroup,
@@ -60,7 +53,7 @@ if (registerForm) {
     };
 
     try {
-      const res = await fetch(endpoint, {
+      const res = await fetch("http://localhost:5000/users", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
@@ -69,7 +62,7 @@ if (registerForm) {
       });
 
       if (res.ok) {
-        alert(`${role} registered successfully!`);
+        alert("User registered successfully!");
         window.location.href = "login.html";
       } else {
         alert("Registration failed. Try again.");
@@ -80,6 +73,8 @@ if (registerForm) {
     }
   });
 }
+
+
 // ===================== LOGIN SCRIPT ==========================
 const loginForm = document.getElementById("loginForm");
 
@@ -105,6 +100,7 @@ if (loginForm) {
       );
 
       if (matchedUser) {
+        matchedUser.role = role; // Ensure role is included in the stored object
         localStorage.setItem("loggedInUser", JSON.stringify(matchedUser));
         alert("Login successful!");
 
@@ -114,7 +110,7 @@ if (loginForm) {
         } else if (role === "hospital") {
           window.location.href = "dashboard_hospital.html";
         } else {
-          window.location.href = "dashboard.html";
+          window.location.href = "dashboard_user.html";
         }
       } else {
         alert("Invalid credentials.");

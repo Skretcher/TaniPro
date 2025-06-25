@@ -1,34 +1,106 @@
 {
-  "users": [],
+  "users": [
+    {
+      "id": 101,
+      "name": "Devendra Singh",
+      "email": "devendra@ex.com",
+      "password": "dev123",
+      "role": "user",
+      "mobile": "9876543210",
+      "city": "Varanasi",
+      "bloodGroup": "A+",
+      "registeredAt": "2025-06-24T08:30:00Z"
+    },
+    {
+      "id": 102,
+      "name": "Riya Sharma",
+      "email": "riya@example.com",
+      "password": "riya123",
+      "role": "user",
+      "mobile": "9123456789",
+      "city": "Delhi",
+      "bloodGroup": "B+",
+      "registeredAt": "2025-06-24T08:35:00Z"
+    },
+    {
+      "id": 103,
+      "name": "Amit Kumar",
+      "email": "amit@example.com",
+      "password": "amit123",
+      "role": "user",
+      "mobile": "9001122334",
+      "city": "Mumbai",
+      "bloodGroup": "O-",
+      "registeredAt": "2025-06-24T08:40:00Z"
+    }
+  ],
   "admins": [
     {
       "id": 1,
       "name": "admin1",
       "email": "admin1@ex.com",
-      "password": "admin123"
+      "password": "admin123",
+      "role": "admin"
     },
     {
       "id": 2,
       "name": "admin2",
       "email": "admin2@ex.com",
-      "password": "admin123"
+      "password": "admin123",
+      "role": "admin"
     }
   ],
   "hospitals": [
     {
       "id": 1,
-      "name": "Galaxyhospital",
+      "name": "Galaxy Hospital",
       "email": "galaxy@ex.com",
-      "password": "galaxy123"
+      "password": "galaxy123",
+      "role": "hospital"
     },
     {
       "id": 2,
-      "name": "Maxhospital",
+      "name": "Max Hospital",
       "email": "max@ex.com",
-      "password": "max123"
+      "password": "max123",
+      "role": "hospital"
     }
   ],
-  "donors": [],
+  "donors": [
+    {
+      "id": 101,
+      "name": "Devendra Singh",
+      "email": "devendra@ex.com",
+      "password": "dev123",
+      "role": "user",
+      "mobile": "9876543210",
+      "city": "Varanasi",
+      "bloodGroup": "A+",
+      "registeredAt": "2025-06-24T08:30:00Z"
+    },
+    {
+      "id": 102,
+      "name": "Riya Sharma",
+      "email": "riya@example.com",
+      "password": "riya123",
+      "role": "user",
+      "mobile": "9123456789",
+      "city": "Delhi",
+      "bloodGroup": "B+",
+      "registeredAt": "2025-06-24T08:35:00Z"
+    },
+    {
+      "id": 103,
+      "name": "Amit Kumar",
+      "email": "amit@example.com",
+      "password": "amit123",
+      "role": "user",
+      "mobile": "9001122334",
+      "city": "Mumbai",
+      "bloodGroup": "O-",
+      "registeredAt": "2025-06-24T08:40:00Z"
+    }
+  ],
   "requests": [],
   "notifications": []
 }
