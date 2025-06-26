@@ -198,3 +198,15 @@ a:hover {
 .logout-btn:hover {
   background-color: #b71c1c;
 }
+
+.link-btn {
+  font-size: 14px;
+  background: #004085;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 4px;
+  text-decoration: none;
+}
+.link-btn:hover {
+  background: #0069d9;
+}

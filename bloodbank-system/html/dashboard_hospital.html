@@ -5,45 +5,57 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Hospital Dashboard | Blood Bank</title>
   <link rel="stylesheet" href="../css/style.css" />
-  <!-- Chart.js CDN for circular charts -->
+
+  <!-- Chart.js for visual stats -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
+  <!-- Header will be loaded dynamically -->
   <div id="header-container"></div>
 
   <main class="dashboard">
     <h2>Welcome, <span id="hospitalName">Hospital</span></h2>
 
-    <!-- Real-time Blood Stock -->
+    <!-- Stock Chart Section -->
     <section class="card">
-      <h3>Blood Stock Overview</h3>
+      <h3>🩸 Blood Stock Overview</h3>
       <canvas id="bloodStockChart" width="300" height="300"></canvas>
+      <div style="text-align: right; margin-top: 10px;">
+        <a href="hospital_stock.html" class="link-btn">➕ Manage Stock</a>
+      </div>
     </section>
 
-    <!-- Hospital-specific Donors -->
+    <!-- Donor Chart Section -->
     <section class="card">
-      <h3>Registered Donors</h3>
+      <h3>💉 Registered Donors</h3>
       <canvas id="donorChart" width="300" height="300"></canvas>
-      <div id="donorList"></div>
+      <div style="text-align: right; margin-top: 10px;">
+        <a href="hospital_entities.html#donors" class="link-btn">👤 Manage Donors</a>
+      </div>
     </section>
 
-    <!-- Hospital-specific Receivers -->
+    <!-- Receiver Chart Section -->
     <section class="card">
-      <h3>Blood Requests</h3>
+      <h3>📋 Blood Requests</h3>
       <canvas id="receiverChart" width="300" height="300"></canvas>
-      <div id="receiverList"></div>
+      <div style="text-align: right; margin-top: 10px;">
+        <a href="hospital_entities.html#receivers" class="link-btn">📥 Manage Receivers</a>
+      </div>
     </section>
 
-    <!-- Placeholder for AI prediction -->
+    <!-- AI Prediction Placeholder -->
     <section class="card ai-section">
       <h3>🔮 AI Prediction (Coming Soon)</h3>
-      <p>AI will help forecast future blood demand based on your hospital’s trends.</p>
+      <p>AI will help forecast future blood demand based on your hospital’s usage trends.</p>
     </section>
 
     <button class="logout-btn" onclick="logout()">Logout</button>
   </main>
 
-  <!-- Load Header and Footer dynamically -->
+  <!-- Footer will be injected dynamically -->
+  <div id="footer-container"></div>
+
+  <!-- Header/Footer Loading -->
   <script type="module">
     import { loadHeader } from "../components/header.js";
     import { loadFooter } from "../components/footer.js";
@@ -51,10 +63,7 @@
     loadFooter();
   </script>
 
-  <!-- Hospital Dashboard Logic -->
+  <!-- Dashboard JS -->
   <script src="../js/dashboard_hospital.js"></script>
-
-  <!-- Footer Container -->
-  <div id="footer-container"></div>
 </body>
 </html>

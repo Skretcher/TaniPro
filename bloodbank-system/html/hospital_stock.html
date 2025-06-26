@@ -1,0 +1,59 @@
+<!-- hospital_stock.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Hospital Stock | Blood Bank</title>
+  <link rel="stylesheet" href="../css/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <div id="header-container"></div>
+
+  <main class="dashboard">
+    <h2>Welcome: <span id="hospitalName">Hospital</span></h2>
+
+    <!-- Stock Form -->
+    <section class="card">
+      <h3>Add / Update Blood Stock</h3>
+      <form id="stockForm">
+        <label for="bloodGroup">Blood Group:</label>
+        <input type="text" id="bloodGroup" placeholder="e.g., A+, B-, O+" required />
+        <label for="units">Units:</label>
+        <input type="number" id="units" placeholder="e.g., 5" required />
+        <button type="submit">Add / Update</button>
+      </form>
+    </section>
+
+    <!-- Table View of Current Stock -->
+    <section class="card">
+      <h3>Current Stock</h3>
+      <table id="stockTable">
+        <thead>
+          <tr>
+            <th>Blood Group</th>
+            <th>Units</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </section>
+
+    <!-- Doughnut Chart View -->
+    <section class="card">
+      <h3>Stock Overview</h3>
+      <canvas id="stockChart" width="400" height="400"></canvas>
+    </section>
+
+    <button class="logout-btn" onclick="logout()">Logout</button>
+  </main>
+
+  <script type="module">
+    import { loadHeader } from "../components/header.js";
+    loadHeader();
+  </script>
+  <script src="../js/hospital_stock.js"></script>
+</body>
+</html>
