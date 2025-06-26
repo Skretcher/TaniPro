@@ -21,6 +21,27 @@ h1, h2, h3 {
   color: #b91c1c;
 }
 
+
+/* FOOTER : Ensure body and html take full height */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* Use flex layout to push footer to bottom */
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Full viewport height */
+}
+
+/* Let main content grow and push footer down */
+main.main-content {
+  flex: 1;
+  padding: 1rem;
+}
+
 /* Container for forms and sections */
 form, .role-selection, #userSection, #adminSection, #hospitalSection {
   max-width: 500px;

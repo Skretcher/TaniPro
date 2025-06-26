@@ -1,4 +1,3 @@
-<!-- dashboard_hospital.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,23 +5,56 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Hospital Dashboard | Blood Bank</title>
   <link rel="stylesheet" href="../css/style.css" />
+  <!-- Chart.js CDN for circular charts -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
   <div id="header-container"></div>
 
   <main class="dashboard">
-    <h2>Welcome : <span id="hospitalName">Galaxy Hospital</span></h2>
+    <h2>Welcome, <span id="hospitalName">Hospital</span></h2>
+
+    <!-- Real-time Blood Stock -->
     <section class="card">
-      <p>Hospital-specific features coming soon (like request blood, view history, etc).</p>
+      <h3>Blood Stock Overview</h3>
+      <canvas id="bloodStockChart" width="300" height="300"></canvas>
+    </section>
+
+    <!-- Hospital-specific Donors -->
+    <section class="card">
+      <h3>Registered Donors</h3>
+      <canvas id="donorChart" width="300" height="300"></canvas>
+      <div id="donorList"></div>
+    </section>
+
+    <!-- Hospital-specific Receivers -->
+    <section class="card">
+      <h3>Blood Requests</h3>
+      <canvas id="receiverChart" width="300" height="300"></canvas>
+      <div id="receiverList"></div>
+    </section>
+
+    <!-- Placeholder for AI prediction -->
+    <section class="card ai-section">
+      <h3>🔮 AI Prediction (Coming Soon)</h3>
+      <p>AI will help forecast future blood demand based on your hospital’s trends.</p>
     </section>
 
     <button class="logout-btn" onclick="logout()">Logout</button>
   </main>
 
+  <!-- Load Header and Footer dynamically -->
   <script type="module">
     import { loadHeader } from "../components/header.js";
+    import { loadFooter } from "../components/footer.js";
     loadHeader();
+    loadFooter();
   </script>
+
+  <!-- Hospital Dashboard Logic -->
   <script src="../js/dashboard_hospital.js"></script>
+
+  <!-- Footer Container -->
+  <div id="footer-container"></div>
 </body>
 </html>

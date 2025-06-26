@@ -1,0 +1,41 @@
+<!-- hospital_entities.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Manage Hospital Entities</title>
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+  <div id="header-container"></div>
+
+  <main class="dashboard">
+    <h2>Manage Donors, Receivers & Stock</h2>
+
+    <!-- Tabs or Navigation Buttons -->
+    <nav>
+      <button onclick="showSection('donors')">Donors</button>
+      <button onclick="showSection('receivers')">Receivers</button>
+      <button onclick="showSection('stock')">Blood Stock</button>
+    </nav>
+
+    <!-- Sections -->
+    <section id="donorsSection" class="entity-section"></section>
+    <section id="receiversSection" class="entity-section" style="display: none;"></section>
+    <section id="stockSection" class="entity-section" style="display: none;"></section>
+
+    <button class="logout-btn" onclick="logout()">Logout</button>
+  </main>
+
+  <div id="footer-container"></div>
+
+  <script type="module">
+    import { loadHeader } from "../components/header.js";
+    import { loadFooter } from "../components/footer.js";
+    loadHeader();
+    loadFooter();
+  </script>
+  <script src="../js/hospital_entities.js"></script>
+</body>
+</html>

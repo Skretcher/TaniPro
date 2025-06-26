@@ -1,63 +1,128 @@
 // js/dashboard_hospital.js
-// Hospital Dashboard: Shows available blood group stock in circular form
+// Hospital Dashboard: Circular Charts for Stock, Donors, Receivers
 
-// Step 1: Get logged in hospital user from localStorage
 const hospitalUser = JSON.parse(localStorage.getItem("loggedInUser"));
-
-// Step 2: Validate the session - only allow hospitals
 if (!hospitalUser || hospitalUser.role !== "hospital") {
   alert("Access denied. Hospitals only.");
   window.location.href = "login.html";
 }
 
-// Step 3: When page is ready, show the hospital name and load stock
 document.addEventListener("DOMContentLoaded", () => {
-  // Display logged-in hospital name in the header
   document.getElementById("hospitalName").textContent = hospitalUser.name;
-
-  // Load and display current blood stock in circular UI
-  loadBloodStock();
+  loadHospitalDashboard();
 });
 
-// ==================== Function: Load Blood Stock =======================
-// Fetches donors data and calculates blood group counts
-async function loadBloodStock() {
+// -----------------------------
+// Load blood stock, donors, receivers
+// -----------------------------
+async function loadHospitalDashboard() {
   try {
-    // Step 1: Get all donors from JSON Server
-    const res = await fetch("http://localhost:5000/donors");
-    const donors = await res.json();
+    const [donorRes, receiverRes, stockRes] = await Promise.all([
+      fetch(`http://localhost:5000/hospital_donors?hospitalId=${hospitalUser.id}`),
+      fetch(`http://localhost:5000/hospital_receivers?hospitalId=${hospitalUser.id}`),
+      fetch(`http://localhost:5000/hospital_stock?hospitalId=${hospitalUser.id}`)
+    ]);
 
-    // Step 2: Create a count object for each blood group
-    const stock = {}; // { 'A+': 2, 'B+': 3, ... }
-    donors.forEach(donor => {
-      const group = donor.bloodGroup.toUpperCase();
-      stock[group] = (stock[group] || 0) + 1;
-    });
+    const donors = await donorRes.json();
+    const receivers = await receiverRes.json();
+    const stock = await stockRes.json();
 
-    // Step 3: Render each blood group as a circle with count
-    const container = document.getElementById("bloodStockContainer");
-    container.innerHTML = ""; // clear previous content
-
-    for (const group in stock) {
-      const circle = document.createElement("div");
-      circle.className = "blood-circle";
-      circle.innerHTML = `
-        <strong>${group}</strong>
-        <span>${stock[group]}</span>
-      `;
-      container.appendChild(circle);
-    }
+    // Render charts
+    renderDonorChart(donors);
+    renderReceiverChart(receivers);
+    renderStockChart(stock);
   } catch (error) {
-    console.error("Error loading blood stock:", error);
-    alert("Failed to load blood stock.");
+    console.error("Error loading hospital data:", error);
+    alert("Failed to load hospital dashboard.");
   }
 }
 
-// ==================== Logout Function =======================
+// -----------------------------
+// Render: Donor Pie Chart
+// -----------------------------
+function renderDonorChart(donors) {
+  const groupCount = {};
+  donors.forEach(d => {
+    groupCount[d.bloodGroup] = (groupCount[d.bloodGroup] || 0) + 1;
+  });
+
+  const labels = Object.keys(groupCount);
+  const data = Object.values(groupCount);
+
+  new Chart(document.getElementById("donorChart"), {
+    type: "doughnut",
+    data: {
+      labels,
+      datasets: [{
+        label: "Donors by Blood Group",
+        data,
+        backgroundColor: getColors(labels.length)
+      }]
+    }
+  });
+}
+
+// -----------------------------
+// Render: Receiver Pie Chart
+// -----------------------------
+function renderReceiverChart(receivers) {
+  const groupCount = {};
+  receivers.forEach(r => {
+    groupCount[r.bloodGroup] = (groupCount[r.bloodGroup] || 0) + 1;
+  });
+
+  const labels = Object.keys(groupCount);
+  const data = Object.values(groupCount);
+
+  new Chart(document.getElementById("receiverChart"), {
+    type: "doughnut",
+    data: {
+      labels,
+      datasets: [{
+        label: "Receivers by Blood Group",
+        data,
+        backgroundColor: getColors(labels.length)
+      }]
+    }
+  });
+}
+
+// -----------------------------
+// Render: Stock Pie Chart
+// -----------------------------
+function renderStockChart(stockObj) {
+  const labels = Object.keys(stockObj);
+  const data = Object.values(stockObj);
+
+  new Chart(document.getElementById("bloodStockChart"), {
+    type: "doughnut",
+    data: {
+      labels,
+      datasets: [{
+        label: "Available Stock",
+        data,
+        backgroundColor: getColors(labels.length)
+      }]
+    }
+  });
+}
+
+// -----------------------------
+// Helper: Colors for charts
+// -----------------------------
+function getColors(count) {
+  const colors = [
+    "#FF6384", "#36A2EB", "#FFCE56", "#4BC0C0",
+    "#9966FF", "#FF9F40", "#66BB6A", "#D32F2F"
+  ];
+  return Array.from({ length: count }, (_, i) => colors[i % colors.length]);
+}
+
+// -----------------------------
+// Logout
+// -----------------------------
 function logout() {
   localStorage.removeItem("loggedInUser");
   window.location.href = "index.html";
 }
-
-// Make logout globally available for logout button
 window.logout = logout;

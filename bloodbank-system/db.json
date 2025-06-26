@@ -68,39 +68,131 @@
   ],
   "donors": [
     {
-      "id": 101,
-      "name": "Devendra Singh",
-      "email": "devendra@ex.com",
-      "password": "dev123",
-      "role": "user",
-      "mobile": "9876543210",
-      "city": "Varanasi",
+      "id": 1,
+      "name": "Rajeev Mehta",
       "bloodGroup": "A+",
-      "registeredAt": "2025-06-24T08:30:00Z"
+      "mobile": "9898989898",
+      "city": "Varanasi",
+      "hospitalId": 1
     },
     {
-      "id": 102,
-      "name": "Riya Sharma",
-      "email": "riya@example.com",
-      "password": "riya123",
-      "role": "user",
-      "mobile": "9123456789",
-      "city": "Delhi",
+      "id": 2,
+      "name": "Sneha Verma",
       "bloodGroup": "B+",
-      "registeredAt": "2025-06-24T08:35:00Z"
+      "mobile": "9876543211",
+      "city": "Varanasi",
+      "hospitalId": 1
     },
     {
-      "id": 103,
-      "name": "Amit Kumar",
-      "email": "amit@example.com",
-      "password": "amit123",
-      "role": "user",
-      "mobile": "9001122334",
-      "city": "Mumbai",
-      "bloodGroup": "O-",
-      "registeredAt": "2025-06-24T08:40:00Z"
+      "id": 3,
+      "name": "Vikram Rao",
+      "bloodGroup": "O+",
+      "mobile": "9012345678",
+      "city": "Delhi",
+      "hospitalId": 2
+    },
+    {
+      "id": 4,
+      "name": "Aisha Khan",
+      "bloodGroup": "AB-",
+      "mobile": "8888000011",
+      "city": "Delhi",
+      "hospitalId": 2
     }
   ],
-  "requests": [],
+  "requests": [
+    {
+      "id": 1,
+      "name": "Mohit Singh",
+      "bloodGroup": "A+",
+      "mobile": "9112233445",
+      "city": "Varanasi",
+      "hospitalId": 1
+    },
+    {
+      "id": 2,
+      "name": "Pooja Sharma",
+      "bloodGroup": "O+",
+      "mobile": "9223344556",
+      "city": "Delhi",
+      "hospitalId": 2
+    }
+  ],
+  "hospital_donors": [
+    {
+      "id": 1,
+      "hospitalId": 1,
+      "name": "Rajeev Mehta",
+      "bloodGroup": "A+",
+      "mobile": "9898989898",
+      "city": "Varanasi"
+    },
+    {
+      "id": 2,
+      "hospitalId": 1,
+      "name": "Sneha Verma",
+      "bloodGroup": "B+",
+      "mobile": "9876543211",
+      "city": "Varanasi"
+    },
+    {
+      "id": 3,
+      "hospitalId": 2,
+      "name": "Vikram Rao",
+      "bloodGroup": "O+",
+      "mobile": "9012345678",
+      "city": "Delhi"
+    },
+    {
+      "id": 4,
+      "hospitalId": 2,
+      "name": "Aisha Khan",
+      "bloodGroup": "AB-",
+      "mobile": "8888000011",
+      "city": "Delhi"
+    }
+  ],
+  "hospital_receivers": [
+    {
+      "id": 1,
+      "hospitalId": 1,
+      "name": "Mohit Singh",
+      "bloodGroup": "A+",
+      "mobile": "9112233445",
+      "city": "Varanasi"
+    },
+    {
+      "id": 2,
+      "hospitalId": 2,
+      "name": "Pooja Sharma",
+      "bloodGroup": "O+",
+      "mobile": "9223344556",
+      "city": "Delhi"
+    }
+  ],
+  "hospital_stock": [
+    {
+      "hospitalId": 1,
+      "A+": 8,
+      "B+": 5,
+      "O+": 3,
+      "AB+": 2,
+      "A-": 1,
+      "B-": 0,
+      "O-": 2,
+      "AB-": 1
+    },
+    {
+      "hospitalId": 2,
+      "A+": 6,
+      "B+": 7,
+      "O+": 4,
+      "AB+": 3,
+      "A-": 2,
+      "B-": 1,
+      "O-": 0,
+      "AB-": 1
+    }
+  ],
   "notifications": []
 }
