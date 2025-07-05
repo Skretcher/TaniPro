@@ -90,9 +90,14 @@ function renderReceiverChart(receivers) {
 // -----------------------------
 // Render: Stock Pie Chart
 // -----------------------------
-function renderStockChart(stockObj) {
-  const labels = Object.keys(stockObj);
-  const data = Object.values(stockObj);
+function renderStockChart(stockArray) {
+  if (!stockArray.length) return;
+
+  const stock = stockArray[0]; // Get the object inside the array
+  const { hospitalId, ...groupData } = stock; // Exclude hospitalId from chart
+
+  const labels = Object.keys(groupData);
+  const data = Object.values(groupData);
 
   new Chart(document.getElementById("bloodStockChart"), {
     type: "doughnut",
@@ -106,6 +111,7 @@ function renderStockChart(stockObj) {
     }
   });
 }
+
 
 // -----------------------------
 // Helper: Colors for charts

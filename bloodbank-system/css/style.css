@@ -210,3 +210,132 @@ a:hover {
 .link-btn:hover {
   background: #0069d9;
 }
+/* ======== LOGIN FORM STYLING ======== */
+
+.login-container {
+  max-width: 400px;
+  margin: 80px auto;
+  background-color: #fff;
+  padding: 30px 40px;
+  border-radius: 10px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+}
+
+.login-container h2 {
+  text-align: center;
+  color: #d32f2f;
+}
+
+.login-container form label {
+  display: block;
+  margin-top: 15px;
+  font-weight: bold;
+}
+
+.login-container form input {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 16px;
+}
+
+.login-container button {
+  width: 100%;
+  margin-top: 25px;
+  padding: 12px;
+  background-color: #d32f2f;
+  border: none;
+  color: white;
+  font-size: 16px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.login-container button:hover {
+  background-color: #b71c1c;
+}
+
+.login-container .link {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.login-container .link a {
+  color: #333;
+  text-decoration: none;
+}
+
+.login-container .link a:hover {
+  text-decoration: underline;
+}
+
+/* ======== REGISTRATION FORM STYLING ======== */
+ body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to right, #f7b0ab, #e57373);
+      margin: 0;
+      padding: 0;
+    }
+
+    .register-container {
+      max-width: 500px;
+      margin: 60px auto;
+      background-color: #fff;
+      padding: 30px 40px;
+      border-radius: 10px;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    h2 {
+      text-align: center;
+      color: #d32f2f;
+    }
+
+    form label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+
+    form input,
+    form select {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 16px;
+    }
+
+    button {
+      width: 100%;
+      margin-top: 25px;
+      padding: 12px;
+      background-color: #d32f2f;
+      border: none;
+      color: white;
+      font-size: 16px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #b71c1c;
+    }
+
+    .back-link {
+      text-align: center;
+      margin-top: 15px;
+    }
+
+    .back-link a {
+      color: #333;
+      text-decoration: none;
+    }
+
+    .back-link a:hover {
+      text-decoration: underline;
+    }
+  

@@ -1,5 +1,3 @@
-// js/hospital_stock.js
-
 const hospitalUser = JSON.parse(localStorage.getItem("loggedInUser"));
 if (!hospitalUser || hospitalUser.role !== "hospital") {
   alert("Access denied. Hospitals only.");
@@ -21,7 +19,7 @@ let chartRef = null;
 // -----------------------------
 async function loadStockData() {
   try {
-    const res = await fetch(`${API_URL}?hospitalId=${hospitalUser.id}`);
+    const res = await fetch(`${API_URL}?hospitalId=${Number(hospitalUser.id)}`);
     const stock = await res.json();
 
     renderStockTable(stock);
@@ -39,6 +37,7 @@ async function handleStockSubmit(e) {
   e.preventDefault();
   const bloodGroup = document.getElementById("bloodGroup").value.trim().toUpperCase();
   const units = parseInt(document.getElementById("units").value);
+  const hospitalId = Number(hospitalUser.id);
 
   if (!bloodGroup || isNaN(units)) {
     alert("Please enter valid values.");
@@ -46,32 +45,41 @@ async function handleStockSubmit(e) {
   }
 
   try {
-    // Check if this blood group already exists for this hospital
-    const res = await fetch(`${API_URL}?hospitalId=${hospitalUser.id}&bloodGroup=${bloodGroup}`);
-    const existing = await res.json();
+    // Fetch all stock and filter manually
+    const res = await fetch(API_URL);
+    const allStock = await res.json();
+    const existing = allStock.find(
+      s => Number(s.hospitalId) === hospitalId && s.bloodGroup === bloodGroup
+    );
 
-    if (existing.length > 0) {
+    if (existing) {
       // Update existing
-      const stockId = existing[0].id;
-      await fetch(`${API_URL}/${stockId}`, {
+      await fetch(`${API_URL}/${existing.id}`, {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ units })
       });
+      alert(`${bloodGroup} stock updated successfully.`);
     } else {
-      // Add new entry
+      // Add new
       await fetch(API_URL, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          hospitalId: hospitalUser.id,
+          hospitalId,
           bloodGroup,
           units
         })
       });
+      alert(`${bloodGroup} stock added successfully.`);
     }
 
     document.getElementById("stockForm").reset();
+    document.getElementById("bloodGroup").disabled = false;
+
+    const cancelBtn = document.getElementById("cancelEdit");
+    if (cancelBtn) cancelBtn.remove();
+
     loadStockData();
   } catch (error) {
     console.error("Error saving stock:", error);
@@ -108,7 +116,7 @@ function renderStockChart(stock) {
   const labels = stock.map(s => s.bloodGroup);
   const data = stock.map(s => s.units);
 
-  if (chartRef) chartRef.destroy(); // Clear previous
+  if (chartRef) chartRef.destroy();
   chartRef = new Chart(ctx, {
     type: "doughnut",
     data: {
@@ -126,8 +134,25 @@ function renderStockChart(stock) {
 // Edit Function (Prefill form)
 // -----------------------------
 function editStock(id, group, units) {
-  document.getElementById("bloodGroup").value = group;
+  const bgSelect = document.getElementById("bloodGroup");
+  bgSelect.value = group;
+  bgSelect.disabled = true;
+
   document.getElementById("units").value = units;
+
+  if (!document.getElementById("cancelEdit")) {
+    const cancelBtn = document.createElement("button");
+    cancelBtn.textContent = "Cancel";
+    cancelBtn.id = "cancelEdit";
+    cancelBtn.type = "button";
+    cancelBtn.style.marginLeft = "1rem";
+    cancelBtn.onclick = () => {
+      document.getElementById("stockForm").reset();
+      bgSelect.disabled = false;
+      cancelBtn.remove();
+    };
+    document.getElementById("stockForm").appendChild(cancelBtn);
+  }
 }
 
 // -----------------------------
@@ -137,6 +162,7 @@ async function deleteStock(id) {
   if (!confirm("Are you sure you want to delete this stock entry?")) return;
   try {
     await fetch(`${API_URL}/${id}`, { method: "DELETE" });
+    alert("Stock entry deleted.");
     loadStockData();
   } catch (error) {
     console.error("Error deleting stock:", error);
