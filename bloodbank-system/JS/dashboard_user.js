@@ -28,26 +28,30 @@ async function searchDonors() {
     resultContainer.innerHTML = "";
 
     if (filtered.length === 0) {
-      resultContainer.textContent = "No donors found in this city.";
+      resultContainer.innerHTML = '<p>No donors found in this city.</p>';
+      window.showInlineAlert("No donors found in this city.", "#f44336");
       return;
     }
 
+    // Render as cards
     filtered.forEach(d => {
-      const div = document.createElement("div");
-      div.className = "donor-card";
-      div.innerHTML = `
+      const card = document.createElement("div");
+      card.className = "donor-card";
+      card.innerHTML = `
         <strong>Name:</strong> ${d.name}<br>
         <strong>Blood Group:</strong> ${d.bloodGroup}<br>
         <strong>Mobile:</strong> ${d.mobile}<br>
-        <strong>City:</strong> ${d.city}<br>
+        <strong>City:</strong> ${d.city}
       `;
-      resultContainer.appendChild(div);
+      resultContainer.appendChild(card);
     });
+    window.showInlineAlert(`Found ${filtered.length} donor(s) in ${city}.`, "#4caf50");
   } catch (error) {
     console.error("Error fetching donors:", error);
-    alert("Server error while searching.");
+    window.showInlineAlert("Server error while searching.", "#f44336");
   }
 }
+
 
 // Logout
 function logout() {

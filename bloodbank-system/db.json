@@ -75,6 +75,7 @@
   "hospitals": [
     {
       "id": "1",
+      "hospitalId": "1",
       "name": "Galaxy Hospital",
       "email": "galaxy@ex.com",
       "password": "galaxy123",
@@ -82,6 +83,7 @@
     },
     {
       "id": "2",
+      "hospitalId": "2",
       "name": "Max Hospital",
       "email": "max@ex.com",
       "password": "max123",
@@ -95,7 +97,7 @@
       "bloodGroup": "A+",
       "mobile": "9898989898",
       "city": "Varanasi",
-      "hospitalId": 1
+      "hospitalId": "1"
     },
     {
       "id": "2",
@@ -103,7 +105,7 @@
       "bloodGroup": "B+",
       "mobile": "9876543211",
       "city": "Varanasi",
-      "hospitalId": 1
+      "hospitalId": "1"
     },
     {
       "id": "3",
@@ -111,7 +113,7 @@
       "bloodGroup": "O+",
       "mobile": "9012345678",
       "city": "Delhi",
-      "hospitalId": 2
+      "hospitalId": "2"
     },
     {
       "id": "4",
@@ -119,7 +121,7 @@
       "bloodGroup": "AB-",
       "mobile": "8888000011",
       "city": "Delhi",
-      "hospitalId": 2
+      "hospitalId": "2"
     }
   ],
   "requests": [
@@ -129,7 +131,7 @@
       "bloodGroup": "A+",
       "mobile": "9112233445",
       "city": "Varanasi",
-      "hospitalId": 1
+      "hospitalId": "1"
     },
     {
       "id": "2",
@@ -137,85 +139,157 @@
       "bloodGroup": "O+",
       "mobile": "9223344556",
       "city": "Delhi",
-      "hospitalId": 2
+      "hospitalId": "2"
     }
   ],
   "hospital_donors": [
     {
-      "id": "1",
-      "hospitalId": 1,
       "name": "Rajeev Mehta",
-      "bloodGroup": "A+",
-      "mobile": "9898989898",
-      "city": "Varanasi"
+      "bloodGroup": "B-",
+      "mobile": "9890089822",
+      "city": "Varanasi",
+      "hospitalId": "1",
+      "id": "1"
     },
     {
-      "id": "2",
-      "hospitalId": 1,
       "name": "Sneha Verma",
-      "bloodGroup": "B+",
-      "mobile": "9876543211",
-      "city": "Varanasi"
+      "bloodGroup": "B-",
+      "mobile": "9876543210",
+      "city": "Varanasi",
+      "hospitalId": "1",
+      "id": "2"
     },
     {
-      "id": "3",
-      "hospitalId": 2,
       "name": "Vikram Rao",
-      "bloodGroup": "O+",
+      "bloodGroup": "A+",
       "mobile": "9012345678",
-      "city": "Delhi"
+      "city": "Delhi",
+      "hospitalId": "2",
+      "id": "3"
     },
     {
       "id": "4",
-      "hospitalId": 2,
+      "hospitalId": "2",
       "name": "Aisha Khan",
       "bloodGroup": "AB-",
       "mobile": "8888000011",
       "city": "Delhi"
+    },
+    {
+      "id": "f69a",
+      "name": "Ravi Sharma",
+      "bloodGroup": "O-",
+      "mobile": "6553219874",
+      "city": "Ghazipur",
+      "hospitalId": "1"
+    },
+    {
+      "id": "7d14",
+      "name": "Krish Rai",
+      "bloodGroup": "O+",
+      "mobile": "8896574213",
+      "city": "Delhi",
+      "hospitalId": "1"
+    },
+    {
+      "id": "ed56",
+      "name": "Sneha Pandey",
+      "bloodGroup": "AB+",
+      "mobile": "6563626869",
+      "city": "Bhopal",
+      "hospitalId": "1"
     }
   ],
   "hospital_receivers": [
     {
-      "id": "1",
-      "hospitalId": 1,
-      "name": "Mohit Singh",
+      "name": "Rohit Singh",
       "bloodGroup": "A+",
-      "mobile": "9112233445",
-      "city": "Varanasi"
+      "mobile": "9412233400",
+      "city": "Varanasi",
+      "hospitalId": "1",
+      "id": "1"
     },
     {
-      "id": "2",
-      "hospitalId": 2,
       "name": "Pooja Sharma",
-      "bloodGroup": "O+",
+      "bloodGroup": "B-",
       "mobile": "9223344556",
-      "city": "Delhi"
+      "city": "Delhi",
+      "hospitalId": "2",
+      "id": "2"
+    },
+    {
+      "name": "Shivam Rai",
+      "bloodGroup": "B+",
+      "mobile": "7896543211",
+      "city": "Bhopal",
+      "hospitalId": "1",
+      "id": "a5ae"
+    },
+    {
+      "id": "d165",
+      "name": "Lakhan Prasad",
+      "bloodGroup": "O-",
+      "mobile": "9011257659",
+      "city": "Ghazipur",
+      "hospitalId": "1"
+    },
+    {
+      "id": "4f01",
+      "name": "Hari Sharma",
+      "bloodGroup": "B+",
+      "mobile": "6562314825",
+      "city": "Varanasi",
+      "hospitalId": "2"
     }
   ],
   "hospital_stock": [
     {
-      "hospitalId": 1,
-      "bloodGroup": "B+",
-      "units": 5,
-      "id": "a2"
-    },
-    {
-      "hospitalId": 1,
+      "id": "a3",
+      "hospitalId": "1",
       "bloodGroup": "O+",
-      "units": 3,
-      "id": "a3"
+      "units": 3
     },
     {
       "id": "0b3c",
-      "hospitalId": 1,
+      "hospitalId": "1",
       "bloodGroup": "A+",
       "units": 8
     },
     {
       "id": "cf87",
-      "hospitalId": 1,
+      "hospitalId": "1",
       "bloodGroup": "AB+",
       "units": 6
+    },
+    {
+      "id": "ecf1",
+      "hospitalId": 2,
+      "bloodGroup": "A+",
+      "units": 6
+    },
+    {
+      "id": "df7f",
+      "hospitalId": 2,
+      "bloodGroup": "O+",
+      "units": 4
+    },
+    {
+      "id": "a82f",
+      "hospitalId": 2,
+      "bloodGroup": "AB+",
+      "units": 2
+    },
+    {
+      "id": "13a6",
+      "hospitalId": 2,
+      "bloodGroup": "O-",
+      "units": 4
+    },
+    {
+      "id": "cae0",
+      "hospitalId": 2,
+      "bloodGroup": "B+",
+      "units": 12
     }
   ],
   "notifications": []

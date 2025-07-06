@@ -1,6 +1,4 @@
 // js/dashboard_hospital.js
-// Hospital Dashboard: Circular Charts for Stock, Donors, Receivers
-
 const hospitalUser = JSON.parse(localStorage.getItem("loggedInUser"));
 if (!hospitalUser || hospitalUser.role !== "hospital") {
   alert("Access denied. Hospitals only.");
@@ -27,7 +25,6 @@ async function loadHospitalDashboard() {
     const receivers = await receiverRes.json();
     const stock = await stockRes.json();
 
-    // Render charts
     renderDonorChart(donors);
     renderReceiverChart(receivers);
     renderStockChart(stock);
@@ -88,16 +85,20 @@ function renderReceiverChart(receivers) {
 }
 
 // -----------------------------
-// Render: Stock Pie Chart
+// ✅ FIXED: Render Stock Chart by aggregating stock
 // -----------------------------
 function renderStockChart(stockArray) {
   if (!stockArray.length) return;
 
-  const stock = stockArray[0]; // Get the object inside the array
-  const { hospitalId, ...groupData } = stock; // Exclude hospitalId from chart
+  const groupCount = {};
+  stockArray.forEach(s => {
+    const group = s.bloodGroup;
+    const units = s.units;
+    groupCount[group] = (groupCount[group] || 0) + units;
+  });
 
-  const labels = Object.keys(groupData);
-  const data = Object.values(groupData);
+  const labels = Object.keys(groupCount);
+  const data = Object.values(groupCount);
 
   new Chart(document.getElementById("bloodStockChart"), {
     type: "doughnut",
@@ -111,7 +112,6 @@ function renderStockChart(stockArray) {
     }
   });
 }
-
 
 // -----------------------------
 // Helper: Colors for charts
