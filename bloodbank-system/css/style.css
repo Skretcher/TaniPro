@@ -481,3 +481,26 @@ a:hover {
   width: 100%;
 }
 
+.user-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+  background-color: #fff;
+  box-shadow: 0 0 5px rgba(0,0,0,0.1);
+}
+
+.user-table th,
+.user-table td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: left;
+}
+
+.user-table th {
+  background-color: #f44336;
+  color: white;
+}
+
+.user-table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}

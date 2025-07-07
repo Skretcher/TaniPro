@@ -244,28 +244,16 @@
   ],
   "hospital_stock": [
     {
-      "id": "a3",
       "hospitalId": "1",
-      "bloodGroup": "O+",
+      "bloodGroup": "A+",
+      "units": 5,
+      "id": "gx01"
+    },
+    {
+      "id": "gx02",
+      "hospitalId": 1,
+      "bloodGroup": "B+",
       "units": 3
-    },
-    {
-      "id": "0b3c",
-      "hospitalId": "1",
-      "bloodGroup": "A+",
-      "units": 8
-    },
-    {
-      "id": "cf87",
-      "hospitalId": "1",
-      "bloodGroup": "AB+",
-      "units": 6
-    },
-    {
-      "id": "ecf1",
-      "hospitalId": 2,
-      "bloodGroup": "A+",
-      "units": 6
     },
     {
       "id": "df7f",
